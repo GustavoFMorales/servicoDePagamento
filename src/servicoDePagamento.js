@@ -5,7 +5,7 @@ export default class ServicoDePagamento {
     this.#pagamento = [];
   }
 
-  pagamentoServico(codigoDeBarras, empresa, valor, categoria = "Padrão") {
+  pagar(codigoDeBarras, empresa, valor, categoria = "Padrão") {
     const apenasNumeros = /^\d+$/.test(codigoDeBarras);
     if (
       codigoDeBarras.length < 13 ||
