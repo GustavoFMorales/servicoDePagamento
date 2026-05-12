@@ -7,7 +7,6 @@ export default class ServicoDePagamento {
 
   pagamentoServico(codigoDeBarras, empresa, valor, categoria = "Padrão") {
     const apenasNumeros = /^\d+$/.test(codigoDeBarras);
-    console.log(apenasNumeros);
     if (
       codigoDeBarras.length < 13 ||
       !codigoDeBarras ||
