@@ -107,9 +107,9 @@ describe("Classe Serviçoo de Pagamento", () => {
 
       const consulta = servicoDePagamento.consultaUltimoPagamento();
 
-      assert.equal(consulta.codBarras, "7891234567890");
-      assert.equal(consulta.nomeEmpresa, "PGATS Julio");
-      assert.equal(consulta.valorBoleto, 100.01);
+      assert.equal(consulta.codigoBarras,"7891234567890");
+      assert.equal(consulta.empresa, "PGATS Julio");
+      assert.equal(consulta.valor, 100.01);
       assert.equal(consulta.categoria, "Cara");
     })
   });

@@ -5,12 +5,12 @@ export default class ServicoDePagamento {
     this.#pagamento = [];
   }
 
-  pagar(codigoDeBarras, empresa, valor, categoria = "Padrão") {
-    const apenasNumeros = /^\d+$/.test(codigoDeBarras);
+  pagar(codigoBarras, empresa, valor, categoria = "Padrão") {
+    const apenasNumeros = /^\d+$/.test(codigoBarras);
     if (
-      codigoDeBarras.length < 13 ||
-      !codigoDeBarras ||
-      codigoDeBarras.length > 13
+      codigoBarras.length < 13 ||
+      !codigoBarras ||
+      codigoBarras.length > 13
     ) {
       throw new Error("O código de barras precisa ter 13 caracteres");
     } else if (apenasNumeros === false) {
@@ -26,16 +26,16 @@ export default class ServicoDePagamento {
 
     if (valor > 100) {
       this.#pagamento.push({
-        codBarras: codigoDeBarras,
-        nomeEmpresa: empresa,
-        valorBoleto: valor,
+        codigoBarras: codigoBarras,
+        empresa: empresa,
+        valor: valor,
         categoria: "Cara",
       });
     } else {
       this.#pagamento.push({
-        codBarras: codigoDeBarras,
-        nomeEmpresa: empresa,
-        valorBoleto: valor,
+        codigoBarras: codigoBarras,
+        empresa: empresa,
+        valor: valor,
         categoria: categoria,
       });
     }
