@@ -20,7 +20,7 @@ export default class ServicoDePagamento {
     if (!empresa) {
       throw new Error("Preencha o nome da empresa");
     }
-    if (!valor) {
+    if (valor === undefined || valor === null) {
       throw new Error("Preencha o valor do boleto");
     }
 
