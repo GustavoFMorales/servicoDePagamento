@@ -1,8 +1,8 @@
 import ServicoDePagamento from "../src/servicoDePagamento.js";
 import assert from "node:assert";
 
-describe("Classe Servico de Pagamento", () => {
-    let servicoDePagamento
+describe("Classe Serviçoo de Pagamento", () => {
+  let servicoDePagamento;
   beforeEach(() => {
     servicoDePagamento = new ServicoDePagamento();
   });
@@ -44,17 +44,62 @@ describe("Classe Servico de Pagamento", () => {
   });
   describe("Nome Empresa", () => {
     it("Deve validar se a mensagem de erro é apresentada quando o nome da empresa não for preenchido.", () => {
-        assert.throws(
+      assert.throws(
         () => {
           servicoDePagamento.pagamentoServico("1223456789123", "", 99.99);
         },
         {
           message: "Preencha o nome da empresa",
         },
-      ); 
+      );
     });
   });
-  describe('Valor do boleto', () => {
-    
-  })
+  describe("Valor do boleto", () => {
+    it("Deve validar se a mensagem de erro está sendo apresentada quando o valor do boleto não for preenchido", () => {
+      assert.throws(
+        () => {
+          servicoDePagamento.pagamentoServico("1223456789123", "teste");
+        },
+        {
+          message: "Preencha o valor do boleto",
+        },
+      );
+    });
+  });
+  describe("Pagamento com sucesso", () => {
+    it("Deve validar se a mensagem de sucesso está sendo apresentada quando os dados forem preenchidos corretamente.", () => {
+      const pagamento = servicoDePagamento.pagamentoServico(
+        "1223456789123",
+        "PGATS",
+        99.0,
+      );
+
+      assert.equal(pagamento, "Pagamento realizado com sucesso");
+    });
+    it("Deve validar se a categoria está sendo preenchida como Padrão quando o valor for de até 100 reais.", () => {
+      const pagamento = servicoDePagamento.pagamentoServico(
+        "1223456789123",
+        "PGATS",
+        99.0,
+      );
+
+      const consulta = servicoDePagamento.consultaUltimoPagamento();
+
+      assert.equal(consulta.categoria, "Padrão");
+    });
+    it("Deve validar se a categoria está sendo preenchida como Cara quando o valor for de até 100 reais.", () => {
+      const pagamento = servicoDePagamento.pagamentoServico(
+        "1223456789123",
+        "PGATS",
+        100.01,
+      );
+
+      const consulta = servicoDePagamento.consultaUltimoPagamento();
+
+      assert.equal(consulta.categoria, "Cara");
+    });
+    it('Deve validar o retorno das informações do ultimo elemento da lista', () => {
+        
+    })
+  });
 });
