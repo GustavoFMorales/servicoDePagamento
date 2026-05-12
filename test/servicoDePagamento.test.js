@@ -99,7 +99,18 @@ describe("Classe Serviçoo de Pagamento", () => {
       assert.equal(consulta.categoria, "Cara");
     });
     it('Deve validar o retorno das informações do ultimo elemento da lista', () => {
-        
+        const pagamento = servicoDePagamento.pagamentoServico(
+        "7891234567890",
+        "PGATS Julio",
+        100.01,
+      );
+
+      const consulta = servicoDePagamento.consultaUltimoPagamento();
+
+      assert.equal(consulta.codBarras, "7891234567890");
+      assert.equal(consulta.nomeEmpresa, "PGATS Julio");
+      assert.equal(consulta.valorBoleto, 100.01);
+      assert.equal(consulta.categoria, "Cara");
     })
   });
 });
