@@ -2,7 +2,7 @@
 
 # nome pepiline
 
-name: "Execução via push"
+name: "Testes unitários via push"
 
 on:
   push:
