@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha ./test/**/*test.js --reporter mochawesome"
+      "test": "mocha ./test/**/*test.js --reporter mochawesome --reporter-options reportDir=mochawesome-report,reportFilename=relatorio,inline=true"
+
   },
   "keywords": [],
   "author": "",
