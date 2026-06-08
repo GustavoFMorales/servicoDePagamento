@@ -1,5 +1,3 @@
-# CI de nível de deploy, para executar comandos pós-deploy
-
 # nome pepiline
 
 name: "Testes unitários manual"
