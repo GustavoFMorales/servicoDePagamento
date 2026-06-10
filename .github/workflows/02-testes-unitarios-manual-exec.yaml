@@ -37,9 +37,6 @@ jobs:
      - name: Notificar sucesso no Discord
        if: success()
        uses: sarisia/actions-status-discord@v1
-     - name: Notificar sucesso no Discord
-       if: success()
-       uses: sarisia/actions-status-discord@v1
        with:
           webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
           status: 'success'
